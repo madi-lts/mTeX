@@ -35,10 +35,13 @@
     \RequirePackage{tocvsec2}
     \RequirePackage{verbatim}
     \RequirePackage{xspace}
+    \RequirePackage{simpler-wick}
+    \RequirePackage{caption}
+    \RequirePackage{subcaption}
     \RequirePackage[document]{ragged2e}
         \setlength{\RaggedRightParindent}{\parindent}
     \RequirePackage{parskip}
-        \setlength{\parskip}{0.125\baselineskip plus4pt minus4pt}
+        % \setlength{\parskip}{0.125\baselineskip plus4pt minus4pt}
     \RequirePackage{lipsum}
 %   \RequirePackage[mtpscr]{mtpro2}
 %       \pdfmapfile{+mtpro2.map}
@@ -51,7 +54,7 @@
 			\crefname{figure}{Figure}{Figures}
 			\crefname{chapter}{Chapter}{Chapters}
 			\crefname{appendix}{Appendix}{Appendices}
-			\crefname{section}{Sections}{Sections}
+			\crefname{section}{Section}{Sections}
 			\renewcommand{\creflastconjunction}{, and } % Gives Eqs. (1.1), (1.2), and (1.3) as opposed to (1.1), (1.2), (1.3).
 		% Graphics rule for proper MetaPost file inclusion
 		\ifpdf
