@@ -12,6 +12,7 @@
     \RequirePackage{braket}
     \RequirePackage{color}
     \RequirePackage{cancel}
+    \RequirePackage{chapterbib}
     \RequirePackage{enumerate}
     \RequirePackage{fancyhdr}
     \RequirePackage{feynmp}
@@ -25,6 +26,7 @@
     \RequirePackage{mathtools}
     \RequirePackage{mhchem}
     \RequirePackage{mTeXdefs}
+    \RequirePackage[numbers]{natbib}
     \RequirePackage{listings}
     \RequirePackage{pdfsync}
     \RequirePackage{setspace}
@@ -34,6 +36,7 @@
     \RequirePackage{tabularx}
     \RequirePackage{tocvsec2}
     \RequirePackage{verbatim}
+    \RequirePackage{xfrac}
     \RequirePackage{xspace}
     \RequirePackage{simpler-wick}
     \RequirePackage{caption}
@@ -41,13 +44,14 @@
     \RequirePackage[document]{ragged2e}
         \setlength{\RaggedRightParindent}{\parindent}
     \RequirePackage{parskip}
-        % \setlength{\parskip}{0.125\baselineskip plus4pt minus4pt}
+        \setlength{\parskip}{0.125\baselineskip plus4pt minus4pt}
     \RequirePackage{lipsum}
 %   \RequirePackage[mtpscr]{mtpro2}
 %       \pdfmapfile{+mtpro2.map}
 	% HyperRef and CleveRef must be called at the end
 	\AtBeginDocument{
-		\usepackage[colorlinks=true,linkcolor=blue,citecolor=red,hyperfootnotes=true]{hyperref}
+		\usepackage[colorlinks=true,citecolor=red,hyperfootnotes=true]{hyperref}
+    \usepackage{doi}
 		\usepackage[nameinlink]{cleveref}
 			\crefname{equation}{Eq.~}{Eqs.~}
 			\crefname{table}{Table}{Tables}
@@ -61,6 +65,7 @@
 		  \DeclareGraphicsRule{*}{mps}{*}{}
 		\fi
 	}
+
 
  % Headers & Index
     	\AtBeginDocument{
