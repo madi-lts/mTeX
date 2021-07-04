@@ -24,7 +24,7 @@
     \RequirePackage{listings}
     \RequirePackage{mathrsfs}
     \RequirePackage{mathtools}
-    \RequirePackage{mhchem}
+    \RequirePackage[version=4]{mhchem}
     \RequirePackage{mTeXdefs}
     \RequirePackage[numbers]{natbib}
     \RequirePackage{listings}
