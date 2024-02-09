@@ -65,15 +65,26 @@
 		  \DeclareGraphicsRule{*}{mps}{*}{}
 		\fi
 	}
-
-
- % Headers & Index
-    	\AtBeginDocument{
-	\RaggedRight
-        \fancyhf{}
+\newcommand{\setupheader}{
+\makeatletter
+    \if@twoside
         \fancyhead[LE,RO]{\thepage}
         \fancyhead[RE]{\slshape \nouppercase \leftmark} % Headers italic and lowercase w/caps when specified.
         \fancyhead[LO]{\slshape \nouppercase \rightmark}
+    \else
+    \if@openany
+        \fancyhead[RE,RO]{\thepage}
+        \fancyhead[RE]{\slshape \nouppercase\rightmark} % Headers italic and lowercase w/caps when specified.
+        \fancyhead[RO]{\slshape \nouppercase\rightmark} % Headers italic and lowercase w/caps when specified.    
+    \fi
+\makeatother
+}
+
+ % Headers & Index
+\AtBeginDocument{
+	\justifying
+        \fancyhf{}
+        \setupheader
         \pagestyle{fancy}
 
 		\let\oldthebibliography=\thebibliography
@@ -93,7 +104,11 @@
 				\global\@topnum\z@
 				\@afterindentfalse
 				\secdef\@chapter\@schapter}
-	}
+				
+	    \captionsetup{labelfont=bf,
+	                  width=0.90\textwidth,
+	                  justification=justified}
+}
 
 % New \chapter command to write "Chapter 1" in TOC instead of "1"
 	\def\@chapter[#1]#2{
@@ -192,3 +207,4 @@
 	\addtolength\topmargin{-\headheight}
 	\addtolength\topmargin{-\headsep}
 	\setlength\unitlength{1in}
+% figure parameters
