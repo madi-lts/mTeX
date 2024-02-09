@@ -66,7 +66,7 @@
 		\usepackage[colorlinks=true,citecolor=red,hyperfootnotes=true]{hyperref}
         \usepackage{doi}
 		\usepackage[nameinlink]{cleveref}
-			\crefname{equation}{Eq.~}{Eqs.~}
+			\crefname{equation}{~}{~}
 			\crefname{table}{Table}{Tables}
 			\crefname{figure}{Figure}{Figures}
 			\crefname{chapter}{Chapter}{Chapters}
