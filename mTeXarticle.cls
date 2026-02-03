@@ -3,6 +3,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass{article}
+\DeclareHookRule{begindocument}{showkeys}{before}{nameref}
 
 % Required Packages
     \RequirePackage{amsmath,amssymb,amsfonts,amsthm}
@@ -18,7 +19,7 @@
     \RequirePackage{feynmp}
     \RequirePackage{float}
     \RequirePackage[        
-        letter,% other options: a3paper, a5paper, etc
+        letterpaper,% other options: a3paper, a5paper, etc
         left=1in,
         right=1in,
         top=1in,
@@ -52,8 +53,26 @@
     \RequirePackage{xfrac}
     \RequirePackage{xspace}
     \RequirePackage{simpler-wick}
-    \RequirePackage{caption}
+    \RequirePackage[labelfont=bf]{caption}
     \RequirePackage{subcaption}
+    % Force captions to be full-width and flush-left (no hanging indent)
+    \captionsetup{
+      width=\linewidth,
+      margin=0pt,
+      indention=0pt,
+      format=plain,            % <- key: disables hanging-style formatting
+      justification=justified,
+      singlelinecheck=false
+    }
+    
+    % And do the same for subcaptions
+    \captionsetup[sub]{
+      margin=0pt,
+      indention=0pt,
+      format=plain,
+      justification=justified,
+      singlelinecheck=false
+    }
     \RequirePackage[document]{ragged2e}
         \setlength{\RaggedRightParindent}{\parindent}
     % \RequirePackage{parskip}
@@ -62,22 +81,31 @@
 %   \RequirePackage[mtpscr]{mtpro2}
 %       \pdfmapfile{+mtpro2.map}
 	% HyperRef and CleveRef must be called at the end
-	\AtBeginDocument{
-		\usepackage[colorlinks=true,citecolor=red,hyperfootnotes=true]{hyperref}
-        \usepackage{doi}
-		\usepackage[nameinlink]{cleveref}
-			\crefname{equation}{}{}
-			\crefname{table}{Table}{Tables}
-			\crefname{figure}{Figure}{Figures}
-			\crefname{chapter}{Chapter}{Chapters}
-			\crefname{appendix}{Appendix}{Appendices}
-			\crefname{section}{Section}{Sections}
-			\renewcommand{\creflastconjunction}{, and } % Gives Eqs. (1.1), (1.2), and (1.3) as opposed to (1.1), (1.2), (1.3).
-		% Graphics rule for proper MetaPost file inclusion
-		\ifpdf
-		  \DeclareGraphicsRule{*}{mps}{*}{}
-		\fi
-	}
+    % HyperRef and Cleveref should be loaded late, but still in the preamble.
+    % In a class file: use \RequirePackage (NOT \usepackage), and NOT inside \AtBeginDocument.
+    \RequirePackage[colorlinks=true,citecolor=red,hyperfootnotes=true]{hyperref}
+    \RequirePackage{doi}
+    \RequirePackage[nameinlink]{cleveref}
+    
+    % Now do cleveref naming customizations (can be here; no need for \AtBeginDocument)
+    \crefname{equation}{}{}
+    \crefname{table}{Table}{Tables}
+    \crefname{figure}{Figure}{Figures}
+    \crefname{chapter}{Chapter}{Chapters}
+    \crefname{appendix}{Appendix}{Appendices}
+    \crefname{section}{Section}{Sections}
+    % Oxford comma / conjunctions for cleveref (works across versions)
+    \makeatletter
+    \@ifundefined{crefpairconjunction}{}{\renewcommand{\crefpairconjunction}{ and~}}
+    \@ifundefined{crefmiddleconjunction}{}{\renewcommand{\crefmiddleconjunction}{,~}}
+    \@ifundefined{creflastconjunction}{}{\renewcommand{\creflastconjunction}{, and~}}
+    \@ifundefined{crefrangeconjunction}{}{\renewcommand{\crefrangeconjunction}{--}}
+    \makeatother
+ 
+    % Graphics rule for proper MetaPost file inclusion
+    \ifpdf
+      \DeclareGraphicsRule{*}{mps}{*}{}
+    \fi
 
 \renewcommand{\bibname}{References}
 
@@ -99,8 +127,5 @@
     % \let\endoldtheindex=\endtheindex
     % \renewenvironment{theindex}{\oldtheindex \addcontentsline{toc}{section}{\indexname}}{\endoldtheindex}
     
-    \captionsetup{labelfont=bf,
-	                  width=0.90\textwidth,
-	                  justification=justified}
 
 }
