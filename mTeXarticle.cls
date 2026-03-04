@@ -5,107 +5,12 @@
 \LoadClass{article}
 \DeclareHookRule{begindocument}{showkeys}{before}{nameref}
 
-% Required Packages
-    \RequirePackage{amsmath,amssymb,amsfonts,amsthm}
-    \RequirePackage{authblk}
-    \RequirePackage{bm}
-    \RequirePackage{bbold}
-    \RequirePackage{braket}
-    \RequirePackage{color}
-    \RequirePackage{cancel}
-    \RequirePackage{chapterbib}
-    \RequirePackage{enumerate}
-    % \RequirePackage{fancyhdr}
-    \RequirePackage{feynmp}
-    \RequirePackage{float}
-    \RequirePackage[        
-        letterpaper,% other options: a3paper, a5paper, etc
-        left=1in,
-        right=1in,
-        top=1in,
-        bottom=1in
-        % use vmargin=2cm to make vertical margins equal to 2cm.
-        % us  hmargin=3cm to make horizontal margins equal to 3cm.
-        % use margin=3cm to make all margins  equal to 3cm.
-        ]{geometry}
-    \RequirePackage{graphicx}
-    \RequirePackage{ifpdf}
-    \RequirePackage{lscape}
-    \RequirePackage{listings}
-    \RequirePackage{latexsym}
-    \RequirePackage{listings}
-    \RequirePackage{mathrsfs}
-    \RequirePackage{mathtools}
-    \RequirePackage[version=4]{mhchem}
-    \RequirePackage{mTeXdefs}
-    \RequirePackage[numbers]{natbib}
-    \RequirePackage{listings}
-    \RequirePackage{pdfsync}
-    \RequirePackage{sectsty}
-    \RequirePackage{setspace}
-    \RequirePackage{silence}
-        \WarningFilter{latex}{Command \@arrayparboxrestore has changed.}
-    \RequirePackage{slashed}
-    \RequirePackage{tabularx}
-    \RequirePackage{tocvsec2}
-    \RequirePackage{verbatim}
-    \RequirePackage{xcolor}
-    \RequirePackage{xfrac}
-    \RequirePackage{xspace}
-    \RequirePackage{simpler-wick}
-    \RequirePackage[labelfont=bf]{caption}
-    \RequirePackage{subcaption}
-    % Force captions to be full-width and flush-left (no hanging indent)
-    \captionsetup{
-      width=\linewidth,
-      margin=0pt,
-      indention=0pt,
-      format=plain,            % <- key: disables hanging-style formatting
-      justification=justified,
-      singlelinecheck=false
-    }
-    
-    % And do the same for subcaptions
-    \captionsetup[sub]{
-      margin=0pt,
-      indention=0pt,
-      format=plain,
-      justification=justified,
-      singlelinecheck=false
-    }
-    \RequirePackage[document]{ragged2e}
-        \setlength{\RaggedRightParindent}{\parindent}
-    % \RequirePackage{parskip}
-        % \setlength{\parskip}{0.1}
-    \RequirePackage{lipsum}
-%   \RequirePackage[mtpscr]{mtpro2}
-%       \pdfmapfile{+mtpro2.map}
-	% HyperRef and CleveRef must be called at the end
-    % HyperRef and Cleveref should be loaded late, but still in the preamble.
-    % In a class file: use \RequirePackage (NOT \usepackage), and NOT inside \AtBeginDocument.
-    \RequirePackage[colorlinks=true,citecolor=red,hyperfootnotes=true]{hyperref}
-    \RequirePackage{doi}
-    \RequirePackage[nameinlink]{cleveref}
-    
-    % Now do cleveref naming customizations (can be here; no need for \AtBeginDocument)
-    \crefname{equation}{}{}
-    \crefname{table}{Table}{Tables}
-    \crefname{figure}{Figure}{Figures}
-    \crefname{chapter}{Chapter}{Chapters}
-    \crefname{appendix}{Appendix}{Appendices}
-    \crefname{section}{Section}{Sections}
-    % Oxford comma / conjunctions for cleveref (works across versions)
-    \makeatletter
-    \@ifundefined{crefpairconjunction}{}{\renewcommand{\crefpairconjunction}{ and~}}
-    \@ifundefined{crefmiddleconjunction}{}{\renewcommand{\crefmiddleconjunction}{,~}}
-    \@ifundefined{creflastconjunction}{}{\renewcommand{\creflastconjunction}{, and~}}
-    \@ifundefined{crefrangeconjunction}{}{\renewcommand{\crefrangeconjunction}{--}}
-    \makeatother
+\input{mTeXpackages.sty}
  
-    % Graphics rule for proper MetaPost file inclusion
-    \ifpdf
-      \DeclareGraphicsRule{*}{mps}{*}{}
-    \fi
+% Graphics rule for proper MetaPost file inclusion
+\ifpdf
+    \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
 
 \renewcommand{\bibname}{References}
 
