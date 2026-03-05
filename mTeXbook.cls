@@ -88,8 +88,8 @@
 	\renewcommand{\bibname}{References}
 
 
-	\newenvironment{abstract}{%
-    	\chapter*{Abstract}
+	\newenvironment{preface}{%
+    	\chapter*{Preface}
     	{}}
 
   \def\@maketitle{%
